@@ -1,37 +1,30 @@
-import { useState } from 'react';
+import { Fragment } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { publicRoutes } from '~/routes';
+import { DefaultLayout } from '~/components/Layout';
 function App() {
-    const [name, setName] = useState('');
-    const [price, setPrice] = useState('');
-    const [products, setProducts] = useState([]);
-
-    const handleSubmit = () => {
-        setProducts([
-            ...products,
-            {
-                name,
-                price: parseInt(price),
-            },
-        ]);
-    };
-
-    const total = products.reduce((result, prod) => result + prod.price, 0);
-
     return (
-        <div className="App" style={{ padding: 20 }}>
-            <input value={name} placeholder="nhap ten san pham" onChange={(e) => setName(e.target.value)} />
-
-            <input value={price} placeholder="nhap gia san pham" onChange={(e) => setPrice(e.target.value)} />
-
-            <button onClick={handleSubmit}>Them san pham</button>
-            <h2>Total: ${total}</h2>
-            <ul>
-                {products.map((product, index) => (
-                    <li key={index}>
-                        {product.name},{product.price}
-                    </li>
-                ))}
-            </ul>
-        </div>
+        <Router>
+            <div className="App">
+                <Routes>
+                    {publicRoutes.map((route, index) => {
+                        const Layout = route.Layout === null ? Fragment : DefaultLayout;
+                        const Page = route.Component;
+                        return (
+                            <Route
+                                key={index}
+                                path={route.path}
+                                element={
+                                    <Layout>
+                                        <Page />
+                                    </Layout>
+                                }
+                            />
+                        );
+                    })}
+                </Routes>
+            </div>
+        </Router>
     );
 }
 export default App;
