@@ -1,0 +1,88 @@
+.wrapper {
+    width: 970px;
+    height: 60px;
+    display: flex; /* Sử dụng flex để căn giữa theo chiều dọc */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    justify-content: space-between; /* Căn trái và phải giữa logo và nội dung */
+}
+
+.inner {
+    display: flex;
+    flex-direction: row; /* Logo và nội dung sắp xếp theo hàng ngang */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    width: 100%; /* Chiếm toàn bộ không gian của .inner */
+}
+
+.logo {
+    flex: 0 0 auto; /* Không cho logo co giãn */
+    text-align: left; /* Căn logo về phía bên trái */
+}
+
+.logoImage {
+    width: 100px;
+    height: auto; /* Giữ tỷ lệ hình ảnh */
+}
+
+.hide {
+    display: none;
+}
+
+.logoImageGhost {
+    display: block;
+}
+
+.content {
+    display: flex; /* Sử dụng Flexbox để sắp xếp các button */
+    align-items: center; /* Căn giữa các button theo chiều dọc */
+    justify-content: flex-end; /* Đẩy các button về phía bên phải */
+    gap: 10px; /* Tạo khoảng cách giữa các button */
+    padding: 10px;
+    margin-left: auto; /* Đảm bảo nội dung luôn nằm bên phải */
+}
+
+.cart-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px; 
+    height: 28px; 
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px; /* Bo góc nhẹ */
+    cursor: pointer;
+    font-size: 10px; /* Kích thước icon nhỏ */
+}
+
+.login-btn {
+    font-weight: 600; /* Chữ đậm hơn một chút */
+    font-size: 8px; /* Kích thước chữ nhỏ hơn */
+    color: #676767;
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px; /* Bo góc nhẹ */
+    padding: 4px 8px; /* Giảm padding để phù hợp kích thước nhỏ */
+    height: 28px; /* Đảm bảo chiều cao đồng đều */
+    cursor: pointer;
+}
+
+.language-btn {
+    font-weight: 600; /* Chữ đậm hơn một chút */
+    display: flex; /* Dùng flex để căn icon và chữ */
+    align-items: center; /* Căn giữa icon và chữ theo chiều dọc */
+    font-size: 8px; /* Kích thước chữ nhỏ hơn */
+    color: #676767;
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px; /* Bo góc nhẹ */
+    padding: 4px 8px; /* Giảm padding */
+    height: 28px; /* Đảm bảo chiều cao đồng đều */
+    cursor: pointer;
+
+    /* Khoảng cách giữa chữ và icon */
+    gap: 4px; 
+}
+
+.language-btn .arrow-icon {
+    font-size: 8px; /* Kích thước mũi tên nhỏ hơn */
+    color: #676767; /* Màu sắc mũi tên */
+}
