@@ -1,0 +1,37 @@
+.social-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 1.5rem;
+    margin-top: 1.2rem;
+}
+
+.social-button {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        opacity: 0.9;
+    }
+
+    &.facebook {
+        background-color: #4267b2;
+    }
+
+    &.google {
+        background-color: #db4437;
+    }
+
+    &.linkedin {
+        background-color: #0077b5;
+    }
+}

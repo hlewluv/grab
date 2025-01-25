@@ -1,36 +1,27 @@
-/* Login.module.scss */
+//
 .container {
     display: flex;
     width: 100%;
-    height: 100vh; /* Chiều cao chiếm toàn bộ màn hình */
-    overflow: hidden; /* Tránh kéo dài hoặc cuộn trang */
-}
-
-.logo-container {
-    flex: 7;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: -30px;
-}
-
-.logo {
-    max-width: 80%; /* Giới hạn kích thước logo */
-    height: auto;
+    height: 100vh;
+    overflow: hidden;
 }
 
 .form-container {
-    flex: 3; /* Chiếm 50% chiều ngang */
+    flex: 2;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-right: 40px; /* Thêm khoảng cách 20px từ lề phải */
+    margin-right: 35px;
 }
 
 .form-wrapper {
     width: 100%;
-    max-width: 400px;
+    max-width: 300px;
     padding: 2rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
 }
 
 .header {
@@ -38,74 +29,7 @@
 }
 
 .secondary-logo {
-    max-width: 50%;
-}
-
-.toggle-tabs {
-    display: flex;
-    justify-content: center;
-    list-style: none;
-    padding: 0;
-    margin-bottom: 18px;
-}
-
-.toggle-tabs li {
-    position: relative;
-    font-size: 10px;
-    color: #333;
-}
-
-.toggle-tabs li::before,
-.toggle-tabs li::after {
-    content: '';
-    position: absolute;
-    height: 1px;
-    background-color: #333;
-    top: 50%;
-    width: 20px; /* Độ dài gạch hai bên */
-}
-
-.toggle-tabs li::before {
-    left: -30px; /* Khoảng cách từ chữ tới gạch bên trái */
-}
-
-.toggle-tabs li::after {
-    right: -30px; /* Khoảng cách từ chữ tới gạch bên phải */
-}
-
-.input-group {
-    margin-bottom: 1rem;
-}
-
-.label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-size: 1rem;
-    color: #555;
-}
-
-.input {
-    width: 100%;
-    padding: 0.8rem;
-    font-size: 1rem;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    outline: none;
-}
-
-.checkbox {
-    display: flex;
-    align-items: center;
-    margin-bottom: 1rem;
-}
-
-.checkbox-input {
-    margin-right: 0.5rem;
-}
-
-.checkbox-label {
-    font-size: 0.9rem;
-    color: #555;
+    max-width: 60%;
 }
 
 .button {
@@ -114,73 +38,28 @@
     font-size: 1rem;
     font-weight: bold;
     color: #fff;
-    background-color: #007bff;
+    background-color: #00b14f;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: #097d3d;
+    }
 }
 
-.button:hover {
-    background-color: #0056b3;
+.forgot-password {
+    text-align: right;
+    margin-bottom: 1rem;
 }
 
-.continue-with {
-    text-align: center;
-    margin: 1rem 0;
-}
-
-.social-buttons {
-    display: flex;
-    justify-content: space-between;
-    gap: 1.5rem;
-}
-
-.social-button {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1rem;
+.forgot-password-link {
     font-size: 0.9rem;
-    font-weight: bold;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.facebook {
-    background-color: #4267b2;
-}
-
-.google {
-    background-color: #db4437;
-}
-
-.linkedin {
-    background-color: #0077b5;
-}
-
-.social-button:hover {
-    opacity: 0.9;
-}
-
-.signup {
-    text-align: center;
-    margin-top: 1rem;
-}
-
-.signup-link {
-    color: #007bff;
+    color: #00b14f;
     text-decoration: none;
-}
 
-.signup-link:hover {
-    text-decoration: underline;
-}
-
-.icon {
-    padding-right: 5px;
+    &:hover {
+        text-decoration: underline;
+    }
 }

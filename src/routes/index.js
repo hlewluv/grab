@@ -1,22 +1,46 @@
-import { Component } from 'react';
+// routes.js
+import { createBrowserRouter } from 'react-router-dom';
+import Login from '~/pages/Login';
+import Signup from '~/pages/Signup';
 import Home from '~/pages/Home';
 import Restaurant from '~/pages/Restaurant';
 import Profile from '~/pages/Profile';
 import Checkout from '~/pages/Checkout';
 import Cuisines from '~/pages/Cuisines';
-import Login from '~/pages/Login';
 
-const publicRoutes = [
-    { path: '/', Component: Home },
-    { path: '/restaurant', Component: Restaurant },
-    { path: '/profile', Component: Profile },
-    { path: '/checkout', Component: Checkout, Layout: null },
-    { path: '/cuisines', Component: Cuisines },
-    { path: '/login', Component: Login, Layout: null },
+const router = createBrowserRouter([
+    {
+        path: '/',
+        element: <Login />, // Mặc định vào trang Login khi khởi động
+    },
+    {
+        path: '/login',
+        element: <Login />,
+    },
+    {
+        path: '/signup',
+        element: <Signup />,
+    },
+    {
+        path: '/home',
+        element: <Home />,
+    },
+    {
+        path: '/restaurant',
+        element: <Restaurant />,
+    },
+    {
+        path: '/profile',
+        element: <Profile />,
+    },
+    {
+        path: '/checkout',
+        element: <Checkout />,
+    },
+    {
+        path: '/cuisines',
+        element: <Cuisines />,
+    },
+]);
 
-
-];
-
-const privateRoutes = [];
-
-export { publicRoutes, privateRoutes };
+export default router;

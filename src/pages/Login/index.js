@@ -1,85 +1,120 @@
+import { useState } from 'react';
 import classNames from 'classnames/bind';
+import Button from '~/components/Layout/components/Button';
+import Header from '~/components/Layout/components/HeaderLogin';
+import InputGroup from '~/components/Layout/components/InputGroup';
+import Checkbox from '~/components/Layout/components/Checkbox';
+import ErrorMessage from '~/components/Layout/components/ErrorMessage';
+import SocialButtons from '~/components/Layout/components/SocialButtons';
+import SignupPrompt from '~/components/Layout/components/SignupPrompt';
+import ForgotPassword from '~/components/Layout/components/ForgotPassword';
 import styles from './Login.module.scss';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFacebookF, faGoogle, faLinkedinIn } from '@fortawesome/free-brands-svg-icons'; // Import icons
 
 const cx = classNames.bind(styles);
 
 function Login() {
+    const [identifier, setIdentifier] = useState('');
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState({
+        identifier: '',
+        password: '',
+    });
+    const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+
+    const validateField = (field, value) => {
+        let fieldError = '';
+
+        if (field === 'identifier') {
+            if (!value) {
+                fieldError = 'Phone number or email không được để trống.';
+            } else if (!/\S+@\S+\.\S+/.test(value) && !/^\d{9,11}$/.test(value)) {
+                fieldError = 'Hãy nhập email hợp lệ hoặc số điện thoại.';
+            }
+        }
+
+        if (field === 'password') {
+            if (!value) {
+                fieldError = 'Password không được để trống.';
+            } else if (value.length < 6) {
+                fieldError = 'Password phải có ít nhất 6 ký tự.';
+            }
+        }
+
+        return fieldError;
+    };
+
+    const handleBlur = (field) => {
+        const value = field === 'identifier' ? identifier : password;
+        const fieldError = validateField(field, value);
+        setError((prev) => ({ ...prev, [field]: fieldError }));
+    };
+
+    const handleInputChange = (field, value) => {
+        if (field === 'identifier') {
+            setIdentifier(value);
+        } else if (field === 'password') {
+            setPassword(value);
+        }
+
+        // Xóa lỗi nếu có khi người dùng nhập lại
+        setError((prev) => ({ ...prev, [field]: '' }));
+    };
+
+    const validateForm = () => {
+        const identifierError = validateField('identifier', identifier);
+        const passwordError = validateField('password', password);
+
+        setError({ identifier: identifierError, password: passwordError });
+
+        return !identifierError && !passwordError;
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        if (validateForm()) {
+            console.log('Dữ liệu hợp lệ, gửi tới backend:', { identifier, password });
+            // Gửi dữ liệu tới backend
+        } else {
+            console.log('Form có lỗi, không gửi được.');
+        }
+    };
+
     return (
         <div className={cx('container')}>
-            <div className={cx('logo-container')}>
-                <img
-                    src="https://media.graphassets.com/LbyeCiGYRBStV6jRQNrK"
-                    alt="FoodDesk Logo"
-                    className={cx('logo')}
-                />
-            </div>
             <div className={cx('form-container')}>
                 <div className={cx('form-wrapper')}>
-                    <div className={cx('header')}>
-                        <div className={cx('header-logo')}>
-                            <img
-                                src="https://food.grab.com/static/images/logo-grabfood2.svg"
-                                alt="FoodDesk Logo"
-                                className={cx('secondary-logo')}
-                            />
-                        </div>
-                        <ul class={cx('toggle-tabs')}>
-                            <li class={cx('active-tab')}>Sign Up</li>
-                        </ul>
-                    </div>
-                    <form className={cx('form')}>
-                        <div className={cx('input-group')}>
-                            <label htmlFor="email" className={cx('label')}>
-                                Email Address
-                            </label>
-                            <input type="email" id="email" className={cx('input')} placeholder="demo@example.com" />
-                        </div>
-                        <div className={cx('input-group')}>
-                            <label htmlFor="password" className={cx('label')}>
-                                Password
-                            </label>
-                            <input type="password" id="password" className={cx('input')} placeholder="********" />
-                        </div>
-                        <div className={cx('checkbox')}>
-                            <input type="checkbox" id="remember" className={cx('checkbox-input')} />
-                            <label htmlFor="remember" className={cx('checkbox-label')}>
-                                Remember my preference
-                            </label>
-                        </div>
-                        <button type="submit" className={cx('button')}>
-                            Sign Me In
-                        </button>
-                        <div className={cx('continue-with')}>
-                            <ul class={cx('toggle-tabs')}>
-                                <li class={cx('active-tab')}>Continue with</li>
-                            </ul>
-                            <div className={cx('social-buttons')}>
-                                <button type="button" className={cx('social-button', 'facebook')}>
-                                    <FontAwesomeIcon icon={faFacebookF} className={cx('icon')} />
-                                    Facebook
-                                </button>
-                                <button type="button" className={cx('social-button', 'google')}>
-                                    <FontAwesomeIcon icon={faGoogle} className={cx('icon')} />
-                                    Google
-                                </button>
-                                <button type="button" className={cx('social-button', 'linkedin')}>
-                                    <FontAwesomeIcon icon={faLinkedinIn} className={cx('icon')} />
-                                    LinkedIn
-                                </button>
-                            </div>
-                        </div>
-                        <div className={cx('signup')}>
-                            <p>
-                                Don't have an account?{' '}
-                                <a href="#" className={cx('signup-link')}>
-                                    Sign up
-                                </a>
-                            </p>
-                        </div>
+                    <Header />
+                    <form className={cx('form')} onSubmit={handleSubmit}>
+                        <InputGroup
+                            id="identifier"
+                            label="Phone number or email"
+                            value={identifier}
+                            onChange={(e) => handleInputChange('identifier', e.target.value)}
+                            onBlur={() => handleBlur('identifier')}
+                        />
+                        <InputGroup
+                            id="password"
+                            type={isPasswordVisible ? 'text' : 'password'}
+                            label="Password"
+                            value={password}
+                            onChange={(e) => handleInputChange('password', e.target.value)}
+                            onBlur={() => handleBlur('password')}
+                            isPasswordVisible={isPasswordVisible}
+                            togglePasswordVisibility={() => setIsPasswordVisible(!isPasswordVisible)}
+                        />
+                        {(error.identifier || error.password) && (
+                            <ErrorMessage message={error.identifier || error.password} />
+                        )}{' '}
+                        <Checkbox id="remember" label="Remember my preference" />
+                        <ForgotPassword link="/forgot-password" text="Forgot Password?" />
+                        <Button type="submit" disabled={!identifier || !password || error.identifier || error.password}>
+                            Log In
+                        </Button>
+                        <SocialButtons />
                     </form>
                 </div>
+                <SignupPrompt />
             </div>
         </div>
     );

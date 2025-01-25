@@ -1,0 +1,16 @@
+.signup {
+    text-align: center;
+    margin-top: 1.5rem;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    width: 25%;
+    font-size: 1rem;
+}
+
+.signup-link {
+    color: #00b14f;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
