@@ -1,6 +1,3 @@
-// src/api/login.js
-import bcrypt from 'bcryptjs';
-
 export const fetchLogin = async (usernameOrEmail, password) => {
     try {
         const response = await fetch(`http://localhost:3001/users`);
@@ -25,10 +22,4 @@ export const fetchLogin = async (usernameOrEmail, password) => {
         console.error('Lỗi đăng nhập:', error);
         throw error;
     }
-};
-
-// Hàm kiểm tra email hợp lệ
-const validateEmail = (email) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
 };

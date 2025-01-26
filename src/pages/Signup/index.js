@@ -7,36 +7,73 @@ import SocialButtons from '~/components/Layout/components/SocialButtons';
 import SignupPrompt from '~/components/Layout/components/SignupPrompt';
 import { Link } from 'react-router-dom'; // Import Link
 
+import { fetchRegister } from '~/api/register'; // Đảm bảo import hàm fetchRegister
+
 
 const cx = classNames.bind(styles);
 
 function Signup() {
     const [email, setEmail] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
-    const [fullName, setFullName] = useState('');
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('');
     const [error, setError] = useState('');
 
-    // Các state focus để theo dõi khi input được focus
     const [isEmailFocused, setIsEmailFocused] = useState(false);
     const [isPhoneNumberFocused, setIsPhoneNumberFocused] = useState(false);
-    const [isFullNameFocused, setIsFullNameFocused] = useState(false);
+    const [isFirstNameFocused, setIsFirstNameFocused] = useState(false);
+    const [isLastNameFocused, setIsLastNameFocused] = useState(false);
+    const [isUsernameFocused, setIsUsernameFocused] = useState(false);
     const [isPasswordFocused, setIsPasswordFocused] = useState(false);
-    const [isConfirmPasswordFocused, setIsConfirmPasswordFocused] = useState(false);
 
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-    const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] = useState(false);
 
-    const handleSubmit = (e) => {
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        if (password !== confirmPassword) {
-            setError('Password và Confirm Password không khớp. Vui lòng thử lại.');
-        } else {
-            setError('');
+    
+        // Kiểm tra các trường dữ liệu
+        if (!firstName || !lastName) {
+            setError('First Name và Last Name không được để trống.');
+            return;
+        }
+    
+        // Kiểm tra email
+        if (!email || !/\S+@\S+\.\S+/.test(email)) {
+            setError('Vui lòng nhập một địa chỉ email hợp lệ.');
+            return;
+        }
+    
+        // Kiểm tra số điện thoại (9-11 số)
+        const phoneNumberRegex = /^[0-9]{9,11}$/;
+        if (!phoneNumberRegex.test(phoneNumber)) {
+            setError('Số điện thoại phải có từ 9 đến 11 chữ số.');
+            return;
+        }
+    
+        // Kiểm tra mật khẩu
+        if (password.length < 6) {
+            setError('Mật khẩu phải có ít nhất 6 ký tự.');
+            return;
+        }
+    
+        setError(''); // Xóa lỗi khi tất cả điều kiện đều hợp lệ
+    
+        try {
+            // Gọi fetchRegister để gửi thông tin người dùng đến server
+            const newUser = await fetchRegister(`${firstName} ${lastName}`, email, phoneNumber, username, password);
             alert('Đăng ký thành công!');
+            console.log('Người dùng mới:', newUser);
+        } catch (error) {
+            // Lỗi từ fetchRegister (như trùng email hoặc số điện thoại)
+            setError(error.message); // Lỗi trả về từ API (email/sdt trùng)
         }
     };
+    
+    
+    
 
     return (
         <div className={cx('container')}>
@@ -55,6 +92,41 @@ function Signup() {
                         </ul>
                     </div>
                     <form className={cx('form')} onSubmit={handleSubmit}>
+                        {/* First Name */}
+                        <div className={cx('name-container')}>
+                            <InputGroup
+                                type="text"
+                                id="firstName"
+                                label="First Name"
+                                value={firstName}
+                                onChange={(e) => setFirstName(e.target.value)}
+                                isFocused={isFirstNameFocused}
+                                setIsFocused={setIsFirstNameFocused}
+                            />
+
+                            {/* Last Name */}
+                            <InputGroup
+                                type="text"
+                                id="lastName"
+                                label="Last Name"
+                                value={lastName}
+                                onChange={(e) => setLastName(e.target.value)}
+                                isFocused={isLastNameFocused}
+                                setIsFocused={setIsLastNameFocused}
+                            />
+                        </div>
+
+                        {/* Username */}
+                        <InputGroup
+                            type="text"
+                            id="username"
+                            label="Username"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}
+                            isFocused={isUsernameFocused}
+                            setIsFocused={setIsUsernameFocused}
+                        />
+
                         {/* Email */}
                         <InputGroup
                             type="email"
@@ -77,17 +149,6 @@ function Signup() {
                             setIsFocused={setIsPhoneNumberFocused}
                         />
 
-                        {/* Full Name */}
-                        <InputGroup
-                            type="text"
-                            id="fullName"
-                            label="Full Name"
-                            value={fullName}
-                            onChange={(e) => setFullName(e.target.value)}
-                            isFocused={isFullNameFocused}
-                            setIsFocused={setIsFullNameFocused}
-                        />
-
                         {/* Password */}
                         <InputGroup
                             type="password"
@@ -101,20 +162,7 @@ function Signup() {
                             togglePasswordVisibility={() => setIsPasswordVisible(!isPasswordVisible)}
                         />
 
-                        {/* Confirm Password */}
-                        <InputGroup
-                            type="password"
-                            id="confirmPassword"
-                            label="Confirm Password"
-                            value={confirmPassword}
-                            onChange={(e) => setConfirmPassword(e.target.value)}
-                            isFocused={isConfirmPasswordFocused}
-                            setIsFocused={setIsConfirmPasswordFocused}
-                            isPasswordVisible={isConfirmPasswordVisible}
-                            togglePasswordVisibility={() => setIsConfirmPasswordVisible(!isConfirmPasswordVisible)}
-                        />
-
-                        {error && <div className={cx('error')}>{error}</div>}
+                        {error && <div className={cx('error')}>{error}</div>} {/* Hiển thị lỗi */}
                         <Button type="submit">Sign up</Button>
                         <SocialButtons />
 
@@ -145,7 +193,6 @@ function Signup() {
                 </div>
 
                 <SignupPrompt />
-
             </div>
         </div>
     );
