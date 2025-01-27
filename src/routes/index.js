@@ -11,7 +11,7 @@ import Cuisines from '~/pages/Cuisines';
 const router = createBrowserRouter([
     {
         path: '/',
-        element: <Login />, // Mặc định vào trang Login khi khởi động
+        element: <Home />, 
     },
     {
         path: '/login',

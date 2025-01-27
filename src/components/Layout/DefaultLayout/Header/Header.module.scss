@@ -1,0 +1,149 @@
+.wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to bottom, rgb(76, 76, 76), rgba(48, 48, 48, 0)); /* Mờ dần xuống */
+    z-index: 1000;
+    padding: 2px 1px;
+    box-shadow: none; /* Loại bỏ border sắc nét */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.wrapper.scrolled {
+    background: #ffffff; /* Khi cuộn xuống, dùng nền trắng */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Thêm shadow nhẹ */
+}
+
+.inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.7rem 17.8rem;
+}
+
+
+
+.logo {
+    flex: 0 0 auto; /* Không cho logo co giãn */
+    text-align: left; /* Căn logo về phía bên trái */
+}
+
+
+.logoLink {
+    display: flex;
+    align-items: center;
+}
+
+.logoImage {
+    width: 100px;
+    height: auto; /* Giữ tỷ lệ hình ảnh */
+}
+
+.hide {
+    display: none;
+}
+
+.logoImageGhost {
+    display: block;
+}
+
+.content {
+    display: flex; /* Sử dụng Flexbox để sắp xếp các button */
+    align-items: center; /* Căn giữa các button theo chiều dọc */
+    justify-content: flex-end; /* Đẩy các button về phía bên phải */
+    gap: 8px; /* Tạo khoảng cách giữa các button */
+    padding: 10px;
+    margin-left: auto; /* Đảm bảo nội dung luôn nằm bên phải */
+}
+
+@media (max-width: 1000px) {
+    .input-container {
+        display: none; /* Ẩn .input-container */
+    }
+
+    .wrapper {
+        padding: 0 1rem; /* Giảm padding để vừa với màn hình nhỏ */
+    }
+
+    .content {
+        margin-right: 1rem; /* Giảm khoảng cách bên phải khi màn hình nhỏ */
+    }
+}
+
+.cart-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px; 
+    height: 30px; 
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px; /* Bo góc nhẹ */
+    cursor: pointer;
+    font-size: 12px; /* Kích thước icon nhỏ */
+}
+
+.login-btn {
+    font-weight: 400; /* Chữ đậm hơn một chút */
+    font-size: 8px; /* Kích thước chữ nhỏ hơn */
+    color: #676767;
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px; /* Bo góc nhẹ */
+    padding: 4px 12px; /* Giảm padding để phù hợp kích thước nhỏ */
+    height: 30px; /* Đảm bảo chiều cao đồng đều */
+    cursor: pointer;
+}
+
+.language-btn {
+    font-weight: 600; /* Chữ đậm hơn một chút */
+    display: flex; /* Dùng flex để căn icon và chữ */
+    align-items: center; /* Căn giữa icon và chữ theo chiều dọc */
+    font-size: 8px; /* Kích thước chữ nhỏ hơn */
+    color: #676767;
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px; /* Bo góc nhẹ */
+    padding: 4px 8px; /* Giảm padding */
+    height: 30px; /* Đảm bảo chiều cao đồng đều */
+    cursor: pointer;
+
+    /* Khoảng cách giữa chữ và icon */
+    gap: 4px; 
+}
+
+.language-btn .arrow-icon {
+    font-size: 8px; /* Kích thước mũi tên nhỏ hơn */
+    color: #676767; /* Màu sắc mũi tên */
+}
+
+.input-container {
+    position: relative;
+    width: 190px;
+}
+
+.location-input {
+    width: 100%;
+    padding: 7px 10px 7px 30px; /* Chừa khoảng trống cho icon */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 12px;
+    background-color: #f5f5f5;
+    color: #a0a0a0;
+    outline: none;
+    cursor: not-allowed;
+    margin-left: 2.5rem;
+}
+
+.location-icon {
+    position: absolute;
+    margin-left: 2.5rem;
+    top: 50%;
+    left: 10px; /* Khoảng cách từ viền trái input */
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    fill: rgb(230, 46, 46);
+    pointer-events: none; /* Để không cản trở người dùng nhập liệu */
+}

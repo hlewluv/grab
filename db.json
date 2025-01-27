@@ -1,21 +1,21 @@
 {
   "users": [
     {
-      "id": 1,
+      "id": "1",
       "fullname": "Huy Ho",
       "email": "huyho24062004@gmail.com",
       "phonenumber": "0123456789",
       "password": "12345678"
     },
     {
-      "id": 2,
+      "id": "2",
       "fullname": "Thanh Huy",
       "email": "hothanhhuy24062004@gmail.com",
       "phonenumber": "0987654321",
       "password": "11111111"
     },
     {
-      "id": 3,
+      "id": "3",
       "fullname": "gẻggtr jkhjkhk",
       "email": "kfjkdsfj@gmail.com",
       "phonenumber": "123456789",
@@ -23,7 +23,7 @@
       "password": "123456"
     },
     {
-      "id": 4,
+      "id": "4",
       "fullname": "gẻggtr jkhjkhk",
       "email": "kfjkdsfj@gmail.com",
       "phonenumber": "123456789",
@@ -31,11 +31,19 @@
       "password": "123456"
     },
     {
-      "id": 5,
+      "id": "5",
       "fullname": "han le",
       "email": "ksdada@gmail.com",
       "phonenumber": "1234567822",
       "username": "halelelee",
+      "password": "123456"
+    },
+    {
+      "id": 6,
+      "fullname": "Hoàng  Lê",
+      "email": "hoanghsno1@gmail.com",
+      "phonenumber": "012345678",
+      "username": "hlehleee",
       "password": "123456"
     }
   ]

@@ -1,0 +1,10 @@
+.background {
+    position: absolute; /* Đảm bảo background ở dưới header */
+    top: 0; /* Đặt background ở phần đầu trang */
+    left: 0;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1; /* Đặt background dưới header */
+}
