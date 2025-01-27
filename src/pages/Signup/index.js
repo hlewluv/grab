@@ -9,7 +9,6 @@ import { Link } from 'react-router-dom'; // Import Link
 
 import { fetchRegister } from '~/api/register'; // Đảm bảo import hàm fetchRegister
 
-
 const cx = classNames.bind(styles);
 
 function Signup() {
@@ -30,37 +29,36 @@ function Signup() {
 
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
-
     const handleSubmit = async (e) => {
         e.preventDefault();
-    
+
         // Kiểm tra các trường dữ liệu
         if (!firstName || !lastName) {
             setError('First Name và Last Name không được để trống.');
             return;
         }
-    
+
         // Kiểm tra email
         if (!email || !/\S+@\S+\.\S+/.test(email)) {
             setError('Vui lòng nhập một địa chỉ email hợp lệ.');
             return;
         }
-    
+
         // Kiểm tra số điện thoại (9-11 số)
         const phoneNumberRegex = /^[0-9]{9,11}$/;
         if (!phoneNumberRegex.test(phoneNumber)) {
             setError('Số điện thoại phải có từ 9 đến 11 chữ số.');
             return;
         }
-    
+
         // Kiểm tra mật khẩu
         if (password.length < 6) {
             setError('Mật khẩu phải có ít nhất 6 ký tự.');
             return;
         }
-    
+
         setError(''); // Xóa lỗi khi tất cả điều kiện đều hợp lệ
-    
+
         try {
             // Gọi fetchRegister để gửi thông tin người dùng đến server
             const newUser = await fetchRegister(`${firstName} ${lastName}`, email, phoneNumber, username, password);
@@ -71,9 +69,6 @@ function Signup() {
             setError(error.message); // Lỗi trả về từ API (email/sdt trùng)
         }
     };
-    
-    
-    
 
     return (
         <div className={cx('container')}>
@@ -115,7 +110,6 @@ function Signup() {
                                 setIsFocused={setIsLastNameFocused}
                             />
                         </div>
-
                         {/* Username */}
                         <InputGroup
                             type="text"
@@ -126,7 +120,6 @@ function Signup() {
                             isFocused={isUsernameFocused}
                             setIsFocused={setIsUsernameFocused}
                         />
-
                         {/* Email */}
                         <InputGroup
                             type="email"
@@ -137,7 +130,6 @@ function Signup() {
                             isFocused={isEmailFocused}
                             setIsFocused={setIsEmailFocused}
                         />
-
                         {/* Phone Number */}
                         <InputGroup
                             type="text"
@@ -148,7 +140,6 @@ function Signup() {
                             isFocused={isPhoneNumberFocused}
                             setIsFocused={setIsPhoneNumberFocused}
                         />
-
                         {/* Password */}
                         <InputGroup
                             type="password"
@@ -161,11 +152,11 @@ function Signup() {
                             isPasswordVisible={isPasswordVisible}
                             togglePasswordVisibility={() => setIsPasswordVisible(!isPasswordVisible)}
                         />
-
                         {error && <div className={cx('error')}>{error}</div>} {/* Hiển thị lỗi */}
-                        <Button type="submit">Sign up</Button>
+                        <Button type="submit" showToggleTabs={true}>
+                            Sign up
+                        </Button>
                         <SocialButtons />
-
                         <div className={cx('info-text')}>
                             <p>
                                 People who use our service may have uploaded your contact information to Instagram.{' '}

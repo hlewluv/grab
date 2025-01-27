@@ -1,20 +1,23 @@
-import React from 'react';
+import React from 'react'; 
 import PropTypes from 'prop-types';
 import classNames from 'classnames/bind';
 import styles from './Button.module.scss';
 
 const cx = classNames.bind(styles);
 
-const Button = ({ type = 'button', onClick, className, children, disabled }) => {
+const Button = ({ type = 'button', onClick, className, children, disabled, showToggleTabs }) => {
     return (
         <>
             <button type={type} className={cx('button', className, { disabled })} onClick={onClick} disabled={disabled}>
                 {children}
             </button>
 
-            <ul className={cx('toggle-tabs')}>
-                <li className={cx('active-tab')}>Log in with</li>
-            </ul>
+            {/* Điều kiện hiển thị <ul> */}
+            {showToggleTabs && (
+                <ul className={cx('toggle-tabs')}>
+                    <li className={cx('active-tab')}>Continue with</li>
+                </ul>
+            )}
         </>
     );
 };
@@ -25,6 +28,7 @@ Button.propTypes = {
     className: PropTypes.string,
     children: PropTypes.node.isRequired,
     disabled: PropTypes.bool,
+    showToggleTabs: PropTypes.bool,  // Thêm prop này
 };
 
 export default Button;

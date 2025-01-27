@@ -139,6 +139,7 @@ function Login() {
                         <ForgotPassword link="/forgot-password" text="Forgot Password?" />
                         <Button
                             type="submit"
+                            showToggleTabs={true}
                             disabled={!identifier || !password || error.identifier || error.password || isLoading}
                         >
                             {isLoading ? 'Logging in...' : 'Log In'}
