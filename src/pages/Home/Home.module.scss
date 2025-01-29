@@ -1,4 +1,26 @@
 .container {
     margin-top: 65px; /* Đẩy nội dung bên dưới Header */
-    height: 1000px;
+    height: 4000px;
+}
+
+.restaurant-btn {
+    font-weight: 600; /* Chữ đậm hơn một chút */
+    font-size: 1.4rem; /* Kích thước chữ nhỏ hơn */
+    color: #676767;
+    background-color: #fff;
+    border: 1px solid #c8c7c7;
+    border-radius: 4px; /* Bo góc nhẹ */
+    padding: 6px 20px; /* Giảm padding để phù hợp kích thước nhỏ */
+    height: 40px; /* Đảm bảo chiều cao đồng đều */
+    cursor: pointer;
+    width: calc(100% - 24rem); /* Chiếm hết chiều ngang, trừ 12rem từ mỗi bên */
+    margin: 3rem 12rem; /* Đặt margin 3rem từ trên, và 12rem từ hai bên */
+    display: block; /* Đảm bảo phần tử chiếm diện tích đầy đủ */
+    
+    &:hover {
+        background-color: white; /* Màu xanh khi hover */
+        color: #00b14f; /* Màu chữ trắng khi hover */
+        border: 1px solid #00b14f; /* Viền xanh khi hover */
+
+    }
 }

@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css'; 
 import Header from '~/components/Layout/DefaultLayout/Header';
 import Background from '~/components/Layout/components/Background';
+import Title from '~/components/Layout/components/Title';
 import styles from './Home.module.scss';
 import classNames from 'classnames/bind';
 import LocationSearch from '~/components/Layout/components/LocationSearch';
@@ -60,7 +61,12 @@ function Home() {
                 }}
             />
             {/* <ToastContainer /> */}
+            <Title title="Ưu đãi GrabFood tại " address="74 Nguyễn Khang, P.An Khê, Pleiku, 50000, Vietnam" />
+
             <RestaurantContainer />
+
+            <button className={cx('restaurant-btn')}>See all promotions</button>
+
 
         </div>
     );

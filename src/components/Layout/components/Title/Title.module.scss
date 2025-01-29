@@ -1,0 +1,26 @@
+.titleContainer {
+    display: flex; /* Sử dụng flexbox để căn chỉnh các phần tử trên cùng 1 hàng */
+    justify-content: flex-start; /* Căn trái cho các phần tử trong container */
+    align-items: center; /* Căn chỉnh các phần tử theo chiều dọc (trung tâm) */
+    margin: 3rem 11rem;
+    padding: 10px;
+}
+
+.title {
+    font-size: 2.75rem;
+    font-weight: bold;
+    color: #333; /* Màu chữ cho phần tiêu đề */
+    margin-right: 10px; /* Tạo khoảng cách giữa tiêu đề và địa chỉ */
+}
+
+.greenText {
+    color: #28a745; /* Màu xanh cho địa chỉ */
+    font-weight: 700;
+    font-size: 2.75rem;
+    white-space: nowrap; /* Đảm bảo văn bản không xuống dòng */
+    overflow: hidden; /* Cắt văn bản thừa */
+    text-overflow: ellipsis; /* Thêm dấu '...' khi văn bản bị cắt */
+    max-width: 50%; /* Hoặc đặt max-width tùy theo nhu cầu */
+    display: inline-block; /* Đảm bảo nó không bị tràn ra ngoài */
+}
+

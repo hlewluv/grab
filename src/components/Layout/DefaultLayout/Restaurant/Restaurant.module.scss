@@ -1,15 +1,16 @@
 .restaurant {
     position: relative;
     overflow: hidden;
+    cursor: pointer;
 }
 
 .discount {
     position: absolute;
     font-size: 10px;
     font-weight: 500;
-    color: white;  // Màu sáng cho văn bản
+    color: white; // Màu sáng cho văn bản
     padding: 0.1rem 0.5rem;
-    background: #00b14f;  // Màu nền cho discount (màu đỏ cam)
+    background: #00b14f; // Màu nền cho discount (màu đỏ cam)
     border-radius: 0.2rem;
     left: 0;
     top: 2%;
@@ -54,9 +55,8 @@
     gap: 6px;
     font-size: 1.1rem;
     font-weight: 500;
-    color: #2c3e50;  /* Màu chữ tối giúp dễ đọc hơn */
+    color: #2c3e50; /* Màu chữ tối giúp dễ đọc hơn */
 }
-
 
 .or {
     font-size: 1.2rem;
@@ -71,7 +71,7 @@
 
 .star {
     font-size: 1.5rem;
-    color: yellow;
+    color: #f7c942;
 }
 
 .discount-content {
@@ -91,5 +91,5 @@
 
 .discount-icon {
     color: #d32f2f; /* Màu icon trùng với chữ */
-    font-size: 1.2rem;
+    font-size: 1.3rem;
 }
