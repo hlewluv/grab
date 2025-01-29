@@ -10,11 +10,6 @@ const cx = classNames.bind(styles);
 const LocationSearch = () => {
     const [address, setAddress] = useState('');
 
-    const handleGeoLocation = () => {
-        console.log('Định vị vị trí hiện tại...');
-        // Thêm logic định vị vị trí ở đây
-    };
-
     const handleSearch = () => {
         console.log('Tìm kiếm địa chỉ: ', address);
         // Thêm logic xử lý tìm kiếm

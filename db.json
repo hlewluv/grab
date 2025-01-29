@@ -1,50 +1,235 @@
 {
-  "users": [
-    {
-      "id": "1",
-      "fullname": "Huy Ho",
-      "email": "huyho24062004@gmail.com",
-      "phonenumber": "0123456789",
-      "password": "12345678"
-    },
-    {
-      "id": "2",
-      "fullname": "Thanh Huy",
-      "email": "hothanhhuy24062004@gmail.com",
-      "phonenumber": "0987654321",
-      "password": "11111111"
-    },
-    {
-      "id": "3",
-      "fullname": "gẻggtr jkhjkhk",
-      "email": "kfjkdsfj@gmail.com",
-      "phonenumber": "123456789",
-      "username": "jkhkefhkejw",
-      "password": "123456"
-    },
-    {
-      "id": "4",
-      "fullname": "gẻggtr jkhjkhk",
-      "email": "kfjkdsfj@gmail.com",
-      "phonenumber": "123456789",
-      "username": "jkhkefhkejw",
-      "password": "123456"
-    },
-    {
-      "id": "5",
-      "fullname": "han le",
-      "email": "ksdada@gmail.com",
-      "phonenumber": "1234567822",
-      "username": "halelelee",
-      "password": "123456"
-    },
-    {
-      "id": 6,
-      "fullname": "Hoàng  Lê",
-      "email": "hoanghsno1@gmail.com",
-      "phonenumber": "012345678",
-      "username": "hlehleee",
-      "password": "123456"
-    }
-  ]
+    "users": [
+        {
+            "id": "1",
+            "fullname": "Huy Ho",
+            "email": "huyho24062004@gmail.com",
+            "phonenumber": "0123456789",
+            "password": "12345678"
+        },
+        {
+            "id": "2",
+            "fullname": "Thanh Huy",
+            "email": "hothanhhuy24062004@gmail.com",
+            "phonenumber": "0987654321",
+            "password": "11111111"
+        }
+    ],
+    "restaurants": [
+        {
+            "id": 1,
+            "name": "McDonald's - Nguyễn Văn Linh",
+            "img": "https://food-cms.grab.com/compressed_webp/merchants/5-C35YTETUWFJUGN/hero/1acf676deae64ca592100ac0a8b60d95_1688107564801721863.webp",
+            "address": "Nguyễn Văn Linh, TP.HCM",
+            "categories": ["Thức ăn nhanh", "Cơm", "Món Quốc Tế"],
+            "rating": 4.4,
+            "eta": "30 phút",
+            "distance": "5.9 km",
+            "status": "open",
+            "operating_hours": { "today": "00:00-23:59" },
+            "menu": [
+                {
+                    "category": "Best Seller",
+                    "food_items": [
+                        {
+                            "name": "Big Mac",
+                            "price": "89,000 VND",
+                            "image": "/assets/images/img/soup.png",
+                            "description": "Burger Big Mac huyền thoại với 2 lớp thịt bò, xốt Big Mac đặc trưng và rau tươi."
+                        },
+                        {
+                            "name": "Khoai Tây Chiên (L)",
+                            "price": "45,000 VND",
+                            "image": "/assets/images/img/fries-large.png", 
+                            "description": "Khoai tây chiên giòn rụm, vị mặn vừa đủ, ngon hơn khi dùng kèm sốt chấm."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "name": "Phở 24 - Quận 1",
+            "address": "Lê Thánh Tôn, Quận 1, TP.HCM",
+            "categories": ["Món Việt", "Phở", "Bún"],
+            "rating": 4.6,
+            "img":"https://food-cms.grab.com/compressed_webp/merchants/5-C6BXRZKTJY5AAJ/hero/cc1e87aae7894527936346ebf1996737_1736091000497017531.webp", 
+            "eta": "25 phút",
+            "distance": "4.5 km",
+            "status": "open",
+            "operating_hours": { "today": "06:00-22:00" },
+            "menu": [
+                {
+                    "category": "Phở",
+                    "food_items": [
+                        {
+                            "name": "Phở Bò Tái",
+                            "price": "65,000 VND",
+                            "image": "/assets/images/img/pho-bo-tai.png",
+                            "description": "Phở bò tái với nước dùng đậm đà, thịt bò mềm và thơm ngon."
+                        },
+                        {
+                            "name": "Phở Gà",
+                            "price": "60,000 VND",
+                            "image": "/assets/images/img/pho-ga.png",
+                            "description": "Phở gà truyền thống với nước dùng thanh ngọt và thịt gà thơm ngon."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "name": "Sushi Hokkaido Sachi",
+            "address": "Nguyễn Đình Chiểu, Quận 3, TP.HCM",
+            "categories": ["Món Nhật", "Sushi", "Hải Sản"],
+            "rating": 4.8,
+            "img":"https://food-cms.grab.com/compressed_webp/merchants/5-C3CEAJ4KGTKTEA/hero/604958e5ee074cba9653b99f864a92bf_1734371219802135733.webp",
+            "eta": "40 phút",
+            "distance": "6.2 km",
+            "status": "open",
+            "operating_hours": { "today": "11:00-22:00" },
+            "menu": [
+                {
+                    "category": "Sushi",
+                    "food_items": [
+                        {
+                            "name": "Sashimi Cá Hồi",
+                            "price": "150,000 VND",
+                            "image": "/assets/images/img/sashimi-salmon.png",
+                            "description": "Sashimi cá hồi tươi ngon, mềm mịn, tan chảy trong miệng."
+                        },
+                        {
+                            "name": "Nigiri Tôm",
+                            "price": "90,000 VND",
+                            "image": "/assets/images/img/nigiri-shrimp.png", 
+                            "description": "Cơm sushi kết hợp với tôm tươi, chấm kèm nước tương và wasabi."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "name": "Pizza 4P's - Thảo Điền",
+            "address": "Thảo Điền, Quận 2, TP.HCM",
+            "categories": ["Pizza", "Món Ý", "Món Quốc Tế"],
+            "rating": 4.7,
+            "img":"https://food-cms.grab.com/compressed_webp/merchants/5-C64TG7ATCBU1GJ/hero/91a67f5e9a0b40eda590077f9785e80a_1735108278558851217.webp",
+            "eta": "35 phút",
+            "distance": "7.3 km",
+            "status": "open",
+            "operating_hours": { "today": "10:00-23:00" },
+            "menu": [
+                {
+                    "category": "Pizza",
+                    "food_items": [
+                        {
+                            "name": "Pizza 4 Cheese",
+                            "price": "220,000 VND",
+                            "image": "/assets/images/img/pizza-4-cheese.png", 
+                            "description": "Pizza 4 loại phô mai béo ngậy, thơm lừng, dùng kèm mật ong."
+                        },
+                        {
+                            "name": "Pizza Hải Sản",
+                            "price": "250,000 VND",
+                            "image": "/assets/images/img/pizza-seafood.png", 
+                            "description": "Pizza hải sản với tôm, mực, sốt cà chua và phô mai tươi."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "name": "Pizza 4P's - Thảo Điền",
+            "address": "Thảo Điền, Quận 2, TP.HCM",
+            "categories": ["Pizza", "Món Ý", "Món Quốc Tế"],
+            "rating": 4.7,
+            "img":"https://food-cms.grab.com/compressed_webp/merchants/5-C64TG7ATCBU1GJ/hero/91a67f5e9a0b40eda590077f9785e80a_1735108278558851217.webp",
+            "eta": "35 phút",
+            "distance": "7.3 km",
+            "status": "open",
+            "operating_hours": { "today": "10:00-23:00" },
+            "menu": [
+                {
+                    "category": "Pizza",
+                    "food_items": [
+                        {
+                            "name": "Pizza 4 Cheese",
+                            "price": "220,000 VND",
+                            "image": "/assets/images/img/pizza-4-cheese.png", 
+                            "description": "Pizza 4 loại phô mai béo ngậy, thơm lừng, dùng kèm mật ong."
+                        },
+                        {
+                            "name": "Pizza Hải Sản",
+                            "price": "250,000 VND",
+                            "image": "/assets/images/img/pizza-seafood.png", 
+                            "description": "Pizza hải sản với tôm, mực, sốt cà chua và phô mai tươi."
+                        }
+                    ]
+                }
+            ]
+        },        {
+            "id": 6,
+            "name": "Pizza 4P's - Thảo Điền",
+            "address": "Thảo Điền, Quận 2, TP.HCM",
+            "categories": ["Pizza", "Món Ý", "Món Quốc Tế"],
+            "rating": 4.7,
+            "img":"https://food-cms.grab.com/compressed_webp/merchants/5-C64TG7ATCBU1GJ/hero/91a67f5e9a0b40eda590077f9785e80a_1735108278558851217.webp",
+            "eta": "35 phút",
+            "distance": "7.3 km",
+            "status": "open",
+            "operating_hours": { "today": "10:00-23:00" },
+            "menu": [
+                {
+                    "category": "Pizza",
+                    "food_items": [
+                        {
+                            "name": "Pizza 4 Cheese",
+                            "price": "220,000 VND",
+                            "image": "/assets/images/img/pizza-4-cheese.png", 
+                            "description": "Pizza 4 loại phô mai béo ngậy, thơm lừng, dùng kèm mật ong."
+                        },
+                        {
+                            "name": "Pizza Hải Sản",
+                            "price": "250,000 VND",
+                            "image": "/assets/images/img/pizza-seafood.png", 
+                            "description": "Pizza hải sản với tôm, mực, sốt cà chua và phô mai tươi."
+                        }
+                    ]
+                }
+            ]
+        },        {
+            "id": 7,
+            "name": "Pizza 4P's - Thảo Điền",
+            "address": "Thảo Điền, Quận 2, TP.HCM",
+            "categories": ["Pizza", "Món Ý", "Món Quốc Tế"],
+            "rating": 4.7,
+            "img":"https://food-cms.grab.com/compressed_webp/merchants/5-C64TG7ATCBU1GJ/hero/91a67f5e9a0b40eda590077f9785e80a_1735108278558851217.webp",
+            "eta": "35 phút",
+            "distance": "7.3 km",
+            "status": "open",
+            "operating_hours": { "today": "10:00-23:00" },
+            "menu": [
+                {
+                    "category": "Pizza",
+                    "food_items": [
+                        {
+                            "name": "Pizza 4 Cheese",
+                            "price": "220,000 VND",
+                            "image": "/assets/images/img/pizza-4-cheese.png", 
+                            "description": "Pizza 4 loại phô mai béo ngậy, thơm lừng, dùng kèm mật ong."
+                        },
+                        {
+                            "name": "Pizza Hải Sản",
+                            "price": "250,000 VND",
+                            "image": "/assets/images/img/pizza-seafood.png", 
+                            "description": "Pizza hải sản với tôm, mực, sốt cà chua và phô mai tươi."
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
 }

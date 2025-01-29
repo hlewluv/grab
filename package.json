@@ -11,6 +11,7 @@
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.28.2",
     "react-scripts": "5.0.1",
+    "react-toastify": "^11.0.3",
     "tippy.js": "^6.3.7",
     "web-vitals": "^2.1.0"
   },
@@ -24,7 +25,9 @@
     "customize-cra": "^1.0.0",
     "react-app-rewired": "^2.2.1",
     "sass": "^1.83.4",
-    "tailwindcss": "^4.0.0"
+    "sass-loader": "^16.0.4",
+    "tailwindcss": "^4.0.0",
+    "webpack": "^5.97.1"
   },
   "scripts": {
     "start": "react-app-rewired start",

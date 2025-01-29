@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import classNames from 'classnames/bind';
 import Button from '~/components/Layout/components/Button';
 import Header from '~/components/Layout/components/HeaderLogin';
@@ -9,6 +10,7 @@ import SocialButtons from '~/components/Layout/components/SocialButtons';
 import SignupPrompt from '~/components/Layout/components/SignupPrompt';
 import ForgotPassword from '~/components/Layout/components/ForgotPassword';
 import styles from './Login.module.scss';
+import 'react-toastify/dist/ReactToastify.css';
 
 const cx = classNames.bind(styles);
 
@@ -21,7 +23,9 @@ function Login() {
         server: '',
     });
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-    const [isLoading, setIsLoading] = useState(false);
+    // const [isLoading, setIsLoading] = useState(false);
+
+    const navigate = useNavigate(); // Initialize navigate
 
     const validateField = (field, value) => {
         let fieldError = '';
@@ -70,36 +74,28 @@ function Login() {
     };
 
     const fetchLogin = async () => {
-        setIsLoading(true);
         try {
-            // Gửi GET request để lấy danh sách người dùng từ mock server
             const response = await fetch('http://localhost:3001/users');
             const users = await response.json();
-    
+
             if (!response.ok) {
                 throw new Error('Đăng nhập thất bại. Vui lòng thử lại.');
             }
-    
-            // Tìm kiếm người dùng dựa trên email hoặc số điện thoại và mật khẩu
+
             const user = users.find(
-                (u) =>
-                    (u.email === identifier || u.phonenumber === identifier) &&
-                    u.password === password
+                (u) => (u.email === identifier || u.phonenumber === identifier) && u.password === password,
             );
-    
+
             if (user) {
-                console.log('Đăng nhập thành công:', user); // Thực hiện điều hướng hoặc lưu thông tin
-                alert('Login successful!');
+                navigate('/home', { state: { showToast: true } }); // Truyền state 'showToast' khi chuyển hướng
             } else {
                 throw new Error('Email/số điện thoại hoặc mật khẩu không đúng.');
             }
+            
         } catch (err) {
             setError((prev) => ({ ...prev, server: err.message }));
-        } finally {
-            setIsLoading(false);
         }
     };
-    
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -140,9 +136,9 @@ function Login() {
                         <Button
                             type="submit"
                             showToggleTabs={true}
-                            disabled={!identifier || !password || error.identifier || error.password || isLoading}
+                            // disabled={!identifier || !password || error.identifier || error.password || isLoading}
                         >
-                            {isLoading ? 'Logging in...' : 'Log In'}
+                            {/* {isLoading ? 'Logging in...' : 'Log In'} */}
                         </Button>
                         <SocialButtons />
                     </form>

@@ -1,11 +1,11 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import classNames from 'classnames/bind';
 import styles from './Signup.module.scss';
 import InputGroup from '~/components/Layout/components/InputGroup';
 import Button from '~/components/Layout/components/Button';
 import SocialButtons from '~/components/Layout/components/SocialButtons';
 import SignupPrompt from '~/components/Layout/components/SignupPrompt';
-import { Link } from 'react-router-dom'; // Import Link
 
 import { fetchRegister } from '~/api/register'; // Đảm bảo import hàm fetchRegister
 
@@ -28,6 +28,8 @@ function Signup() {
     const [isPasswordFocused, setIsPasswordFocused] = useState(false);
 
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+
+    const navigate = useNavigate(); // Sử dụng useNavigate để điều hướng
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -64,6 +66,9 @@ function Signup() {
             const newUser = await fetchRegister(`${firstName} ${lastName}`, email, phoneNumber, username, password);
             alert('Đăng ký thành công!');
             console.log('Người dùng mới:', newUser);
+
+            // Chuyển về trang login
+            navigate('/login'); // Điều hướng về trang login
         } catch (error) {
             // Lỗi từ fetchRegister (như trùng email hoặc số điện thoại)
             setError(error.message); // Lỗi trả về từ API (email/sdt trùng)
@@ -164,7 +169,7 @@ function Signup() {
                                     Learn More
                                 </a>
                             </p>
-                            <p>
+                            {/* <p>
                                 By signing up, you will agree to our{' '}
                                 <a href="#" className={cx('link')}>
                                     Terms
@@ -178,7 +183,7 @@ function Signup() {
                                     Cookies Policy
                                 </a>
                                 .
-                            </p>
+                            </p> */}
                         </div>
                     </form>
                 </div>
