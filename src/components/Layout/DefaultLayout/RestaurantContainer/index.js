@@ -1,40 +1,54 @@
-import React, { useState, useEffect } from 'react';
-import classNames from 'classnames/bind';
-import Restaurant from '~/components/Layout/DefaultLayout/Restaurant';
-import styles from './RestaurantContainer.module.scss';
+import React, { useState, useEffect } from "react";
+import classNames from "classnames/bind";
+import styles from "./RestaurantContainer.module.scss";
+import Restaurant from "~/components/Layout/DefaultLayout/Restaurant"; // Component hiển thị nhà hàng
+import CategoryCard from "~/components/Layout/DefaultLayout/Category"; // Component hiển thị danh mục món ăn
 
-const cx = classNames.bind(styles);  // Bind styles vào classNames
+const cx = classNames.bind(styles);
 
-const RestaurantContainer = () => {
-  const [restaurants, setRestaurants] = useState([]);
+const RestaurantContainer = ({ type = "restaurant" }) => {
+  const [items, setItems] = useState([]);
 
-  // Fetch data từ API
   useEffect(() => {
-    fetch('http://localhost:3001/restaurants')  // Bạn cần thay thế API này với URL thực tế
-      .then(response => response.json())
-      .then(data => {
-        console.log(data);  // Kiểm tra cấu trúc dữ liệu trả về
-        // Trực tiếp sử dụng data nếu là mảng
+    const url =
+      type === "category"
+        ? "http://localhost:3001/categories"
+        : "http://localhost:3001/restaurants";
+
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Fetched Data:", data);
         if (Array.isArray(data)) {
-          setRestaurants(data);
+          setItems(data);
         } else {
           console.error("Dữ liệu không phải là mảng:", data);
         }
       })
-      .catch(error => console.error("Error fetching data: ", error));  // Bắt lỗi nếu API không thành công
-  }, []);
+      .catch((error) => console.error("Lỗi khi lấy dữ liệu: ", error));
+  }, [type]);
 
-  return (
-    <div className={cx('restaurants-container')}>  {/* Sử dụng classNames với SCSS */}
-      {Array.isArray(restaurants) && restaurants.length > 0 ? (
-        restaurants.map(restaurant => (
+  return type === "restaurant" ? (
+    <div className={cx("restaurants-container")}>
+      {items.length > 0 ? (
+        items.map((restaurant) => (
           <Restaurant key={restaurant.id} restaurant={restaurant} />
         ))
       ) : (
-        <p>No restaurants found.</p>  // Thông báo khi không có nhà hàng
+        <p>No restaurants found.</p>
+      )}
+    </div>
+  ) : (
+    <div className={cx("restaurants-container")}>
+      {items.length > 0 ? (
+        items.map((category) => (
+          <CategoryCard key={category.id} category={category} />
+        ))
+      ) : (
+        <p>No categories found.</p>
       )}
     </div>
   );
-}
+};
 
 export default RestaurantContainer;

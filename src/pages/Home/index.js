@@ -63,9 +63,13 @@ function Home() {
             {/* <ToastContainer /> */}
             <Title title="Ưu đãi GrabFood tại " address="74 Nguyễn Khang, P.An Khê, Pleiku, 50000, Vietnam" />
 
-            <RestaurantContainer />
+            <RestaurantContainer type="restaurant" />
 
             <button className={cx('restaurant-btn')}>See all promotions</button>
+
+            <Title title="There's something for everyone!"/>
+
+            <RestaurantContainer type="category" />
 
 
         </div>

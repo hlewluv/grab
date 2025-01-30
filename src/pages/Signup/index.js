@@ -169,7 +169,7 @@ function Signup() {
                                     Learn More
                                 </a>
                             </p>
-                            {/* <p>
+                            <p>
                                 By signing up, you will agree to our{' '}
                                 <a href="#" className={cx('link')}>
                                     Terms
@@ -183,7 +183,7 @@ function Signup() {
                                     Cookies Policy
                                 </a>
                                 .
-                            </p> */}
+                            </p>
                         </div>
                     </form>
                 </div>
