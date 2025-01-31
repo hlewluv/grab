@@ -1,0 +1,87 @@
+.footer {
+    background-color: #00b14f;
+    color: white;
+    text-align: center;
+    padding-top: 20px;
+
+    .section {
+        padding-top: 5px;
+        display: flex;
+        padding-left: 120px;
+        margin-bottom: 20px;
+    }
+
+    .logo {
+        width: 150px;
+    }
+
+    .container {
+        display: flex;
+    }
+
+    .links {
+        list-style: none;
+        padding: 0;
+        text-align: left;
+        display: grid;
+        grid-template-columns: repeat(3, auto);
+        gap: 20px 50px;
+
+        li a {
+            color: white;
+            text-decoration: none;
+            font-size: 13px;
+        }
+    }
+
+    .socialIcons {
+        display: flex;
+        gap: 15px;
+    }
+
+    .icon {
+        justify-content: center;
+        align-items: center;
+        width: 28px;
+        height: 26px;
+        background: white;
+        border-radius: 5px;
+        color: #00b14f;
+        font-size: 16px;
+    }
+
+    .footerBottom {
+        display: flex;
+        justify-content: space-between; /* Căn trái phải */
+        align-items: center;
+        font-size: 12px;
+        margin-top: 20px;
+        padding: 10px 120px;
+        a {
+            color: white; /* Màu chữ trắng */
+            text-decoration: none; /* Bỏ gạch chân */
+        }
+    }
+
+    .downloadButtons {
+        display: flex;
+        gap: 15px;
+    }
+
+    .appStore,
+    .googlePlay {
+        height: 40px;
+    }
+
+    .copyright {
+        text-align: right;
+    }
+
+    hr {
+        border: 0;
+        height: 1px;
+        background-color: rgba(255, 255, 255, 0.3);
+        margin: 20px auto;
+        width: 80%;
+    }
+}

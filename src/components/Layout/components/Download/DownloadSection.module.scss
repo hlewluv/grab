@@ -1,0 +1,64 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; // Căn tất cả phần tử theo chiều dọc
+  gap: 40px;
+  padding: 40px 150px;
+  margin-top: -16px;
+  background-color: #f8f9fa;
+
+  .feature {
+    flex: 1;
+    text-align: center;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 300px; // Đảm bảo tất cả phần tử có cùng chiều cao
+
+    img {
+      width: 120px;
+      height: auto;
+      margin-bottom: 16px;
+      align-self: center; // Đảm bảo ảnh luôn nằm giữa
+    }
+
+    h3 {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 14px;
+      color: #666;
+    }
+  }
+
+  .download-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 20px;
+
+    img {
+      width: 140px;
+      height: auto;
+      cursor: pointer;
+      transition: transform 0.2s ease-in-out;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+  }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    text-align: center;
+    gap: 40px;
+  }
+}

@@ -1,0 +1,33 @@
+.content-item {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+    flex-wrap: nowrap; /* Ngăn chặn việc xuống dòng */
+    padding: 0 60px;
+}
+
+.icon {
+    padding-top: 5px;
+    color: #28a745;
+    font-size: 15px;
+    flex-shrink: 0; /* Ngăn icon bị co lại */
+}
+
+.text-wrapper {
+    display: flex;
+    flex-wrap: wrap; /* Cho phép nội dung tự động điều chỉnh */
+    align-items: baseline; /* Giữ cho tiêu đề và mô tả thẳng hàng */
+    gap: 5px;
+}
+
+.title {
+    font-weight: bold;
+    font-size: 14px;
+    white-space: nowrap; /* Tránh bị xuống dòng */
+}
+
+.description {
+    color: #555;
+    font-size: 14px;
+    flex: 1; /* Đảm bảo mô tả lấp đầy không gian còn lại */
+}
