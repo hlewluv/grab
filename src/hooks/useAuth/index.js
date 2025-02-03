@@ -3,7 +3,7 @@ import { useContext, createContext, useState } from 'react';
 const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
-    // Giả lập trạng thái đăng nhập (isAuthenticated: true hoặc false)
+    // Lưu trạng thái đăng nhập vào localStorage để không bị mất khi reload
     const [isAuthenticated, setIsAuthenticated] = useState(
         localStorage.getItem("isAuthenticated") === "true"
     ); 

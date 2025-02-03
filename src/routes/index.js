@@ -7,6 +7,7 @@ import Restaurant from '~/pages/Restaurant';
 import Profile from '~/pages/Profile';
 import Checkout from '~/pages/Checkout';
 import Cuisines from '~/pages/Cuisines';
+import ForgotPassword from '~/pages/ForgotPassword';
 
 const router = createBrowserRouter([
     {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
     {
         path: '/signup',
         element: <Signup />,
+    },
+    {
+        path: '/forgotpassword',
+        element: <ForgotPassword />,
     },
     {
         path: '/home',

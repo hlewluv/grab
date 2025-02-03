@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-// import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import Header from '~/components/Layout/DefaultLayout/Header';
+import Header from '~/components/Layout/DefaultLayout/Header'; // Giữ nguyên import Header của bạn
 import Background from '~/components/Layout/components/Background';
 import Title from '~/components/Layout/components/Title';
 import styles from './Home.module.scss';
@@ -14,12 +12,12 @@ import GrabFoodInfo from '~/components/Layout/components/QA';
 import DownloadSection from '~/components/Layout/components/Download';
 import Footer from '~/components/Layout/DefaultLayout/Footer';
 
-
 const cx = classNames.bind(styles);
 
 function Home() {
     const [isScrolled, setIsScrolled] = useState(false);
     const location = useLocation();
+    const { user, initials } = location.state || {}; // Lấy thông tin từ state
 
     const handleScroll = () => {
         if (window.scrollY > 20) {
@@ -31,24 +29,14 @@ function Home() {
 
     useEffect(() => {
         window.addEventListener('scroll', handleScroll);
-
-        // Kiểm tra nếu state từ navigate chứa 'showToast'
-        // if (location.state?.showToast) {
-        //     toast.success('Đăng nhập thành công!', {
-        //         position: 'top-right',
-        //         autoClose: 2000,
-        //         style: { fontSize: '0.875rem' },
-        //     });
-        // }
-
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };
-    }, [location.state]);
+    }, []);
 
     return (
         <div className={cx('container')}>
-            <Header isScrolled={isScrolled} />
+            <Header isScrolled={isScrolled} initials={initials} /> {/* Truyền initials vào Header */}
             <Background
                 baseUrl="https://food.grab.com/static/page-home/VN-new-{number}.jpg"
                 totalImages={4}
@@ -65,7 +53,6 @@ function Home() {
                     position: 'relative',
                 }}
             />
-            {/* <ToastContainer /> */}
             <Title title="Ưu đãi GrabFood tại " address="74 Nguyễn Khang, P.An Khê, Pleiku, 50000, Vietnam" />
 
             <RestaurantContainer type="restaurant" />
@@ -87,7 +74,6 @@ function Home() {
             <DownloadSection/>
 
             <Footer/>
-
         </div>
     );
 }

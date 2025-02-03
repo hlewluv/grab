@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classnames/bind';
+import { useNavigate } from 'react-router-dom';
 import styles from './Header.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
@@ -7,16 +8,29 @@ import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
 
 const cx = classNames.bind(styles);
 
-function Header({ isScrolled }) {
+function Header({ isScrolled, initials }) {
+    const navigate = useNavigate(); // Dùng hook useNavigate
+
+    const handleLoginClick = () => {
+        navigate('/login'); // Điều hướng đến trang login
+    };
+
+    const handleProfileClick = () => {
+        // Điều hướng đến trang hồ sơ cá nhân nếu người dùng đã đăng nhập
+        navigate('/profile');
+    };
+
     return (
         <header className={cx('wrapper', { scrolled: isScrolled })}>
             <div className={cx('inner')}>
                 <div className={cx('logo')}>
                     <a href="/vn/vi" className={cx('logoLink')}>
                         <img
-                            src={isScrolled
-                                ? "https://food.grab.com/static/images/logo-grabfood2.svg"
-                                : "https://food.grab.com/static/images/logo-grabfood-white2.svg"}
+                            src={
+                                isScrolled
+                                    ? 'https://food.grab.com/static/images/logo-grabfood2.svg'
+                                    : 'https://food.grab.com/static/images/logo-grabfood-white2.svg'
+                            }
                             alt="GrabFood - Thực đơn giao hàng tận nơi & ưu đãi hấp dẫn"
                             className={cx('logoImage')}
                         />
@@ -42,7 +56,19 @@ function Header({ isScrolled }) {
                     <button className={cx('cart-btn')}>
                         <FontAwesomeIcon icon={faShoppingBasket} />
                     </button>
-                    <button className={cx('login-btn')}>Đăng nhập/Đăng ký</button>
+
+                    {initials ? (
+                        // Hiển thị button với tên viết tắt khi người dùng đã đăng nhập
+                        <button className={cx('login-btn')} onClick={handleProfileClick}>
+                            {initials} {/* Hiển thị tên viết tắt */}
+                        </button>
+                    ) : (
+                        // Nếu chưa đăng nhập, hiển thị nút Đăng nhập
+                        <button className={cx('login-btn')} onClick={handleLoginClick}>
+                            Đăng nhập/Đăng ký
+                        </button>
+                    )}
+
                     <button className={cx('language-btn')}>
                         VI
                         <FontAwesomeIcon icon={faCaretDown} className={cx('arrow-icon')} />

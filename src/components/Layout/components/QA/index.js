@@ -46,7 +46,7 @@ const GrabFoodInfo = () => {
           <p>{item.description}</p>
           <hr
                 style={{
-                    marginTop: '15px',
+                    marginTop: '10px',
                     borderColor: 'rgba(242, 238, 238, 0.95)',
                     borderStyle: 'solid',
                     borderWidth: '1px',

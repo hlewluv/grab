@@ -77,17 +77,24 @@ function Login() {
         try {
             const response = await fetch('http://localhost:3001/users');
             const users = await response.json();
-
+    
             if (!response.ok) {
                 throw new Error('Đăng nhập thất bại. Vui lòng thử lại.');
             }
-
+    
             const user = users.find(
                 (u) => (u.email === identifier || u.phonenumber === identifier) && u.password === password,
             );
-
+    
             if (user) {
-                navigate('/home', { state: { showToast: true } }); // Truyền state 'showToast' khi chuyển hướng
+                // Lấy tên viết tắt
+                const getInitials = (fullname) => {
+                    const nameParts = fullname.split(' ');
+                    return nameParts.map(part => part.charAt(0).toUpperCase()).join('');
+                };
+    
+                // Truyền thông tin người dùng và tên viết tắt
+                navigate('/home', { state: { user, initials: getInitials(user.fullname), showToast: true } });
             } else {
                 throw new Error('Email/số điện thoại hoặc mật khẩu không đúng.');
             }
@@ -96,6 +103,8 @@ function Login() {
             setError((prev) => ({ ...prev, server: err.message }));
         }
     };
+    
+    
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -132,13 +141,12 @@ function Login() {
                         {error.password && <ErrorMessage message={error.password} />}
                         {error.server && <ErrorMessage message={error.server} />}
                         <Checkbox id="remember" label="Remember my preference" />
-                        <ForgotPassword link="/forgot-password" text="Forgot Password?" />
+                        <ForgotPassword link="/forgotpassword" text="Forgot Password?" />
                         <Button
                             type="submit"
                             showToggleTabs={true}
-                            // disabled={!identifier || !password || error.identifier || error.password || isLoading}
-                        >
-                            {/* {isLoading ? 'Logging in...' : 'Log In'} */}
+                            // disabled={!identifier || !password || error.identifier || error.password}
+                        > Log in
                         </Button>
                         <SocialButtons />
                     </form>

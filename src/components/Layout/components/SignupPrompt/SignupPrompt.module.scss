@@ -1,6 +1,6 @@
 .signup {
     text-align: center;
-    margin-top: 1.5rem;
+    margin: 1.5rem;
     padding: 1rem;
     border: 1px solid #ddd;
     width: 25%;
@@ -8,9 +8,6 @@
 }
 
 .signup-link {
+    text-decoration: none;
     color: #00b14f;
-
-    &:hover {
-        text-decoration: underline;
-    }
 }
