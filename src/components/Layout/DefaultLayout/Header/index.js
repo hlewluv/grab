@@ -1,22 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import classNames from 'classnames/bind';
 import { useNavigate } from 'react-router-dom';
 import styles from './Header.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
-import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
+import { faShoppingBasket, faCaretDown } from '@fortawesome/free-solid-svg-icons';
+import CartModal from '~/components/Layout/components/CartModal';
 
 const cx = classNames.bind(styles);
 
 function Header({ isScrolled, initials }) {
-    const navigate = useNavigate(); // Dùng hook useNavigate
+    const [isCartOpen, setIsCartOpen] = useState(false); // State để kiểm soát hiển thị modal
+
+    const handleCartClick = () => {
+        setIsCartOpen(true); // Mở giỏ hàng
+    };
+
+    const handleCloseCart = () => {
+        setIsCartOpen(false); // Đóng giỏ hàng
+    };
+
+    const navigate = useNavigate();
 
     const handleLoginClick = () => {
-        navigate('/login'); // Điều hướng đến trang login
+        navigate('/login');
     };
 
     const handleProfileClick = () => {
-        // Điều hướng đến trang hồ sơ cá nhân nếu người dùng đã đăng nhập
         navigate('/profile');
     };
 
@@ -26,11 +35,9 @@ function Header({ isScrolled, initials }) {
                 <div className={cx('logo')}>
                     <a href="/vn/vi" className={cx('logoLink')}>
                         <img
-                            src={
-                                isScrolled
-                                    ? 'https://food.grab.com/static/images/logo-grabfood2.svg'
-                                    : 'https://food.grab.com/static/images/logo-grabfood-white2.svg'
-                            }
+                            src={isScrolled 
+                                ? 'https://food.grab.com/static/images/logo-grabfood2.svg'
+                                : 'https://food.grab.com/static/images/logo-grabfood-white2.svg'}
                             alt="GrabFood - Thực đơn giao hàng tận nơi & ưu đãi hấp dẫn"
                             className={cx('logoImage')}
                         />
@@ -53,17 +60,15 @@ function Header({ isScrolled, initials }) {
                 </div>
 
                 <div className={cx('content')}>
-                    <button className={cx('cart-btn')}>
+                    <button className={cx('cart-btn')} onClick={handleCartClick}>
                         <FontAwesomeIcon icon={faShoppingBasket} />
                     </button>
 
                     {initials ? (
-                        // Hiển thị button với tên viết tắt khi người dùng đã đăng nhập
                         <button className={cx('login-btn')} onClick={handleProfileClick}>
-                            {initials} {/* Hiển thị tên viết tắt */}
+                            {initials}
                         </button>
                     ) : (
-                        // Nếu chưa đăng nhập, hiển thị nút Đăng nhập
                         <button className={cx('login-btn')} onClick={handleLoginClick}>
                             Đăng nhập/Đăng ký
                         </button>
@@ -75,6 +80,9 @@ function Header({ isScrolled, initials }) {
                     </button>
                 </div>
             </div>
+
+            {/* Render CartModal khi isCartOpen là true */}
+            <CartModal isOpen={isCartOpen} onClose={handleCloseCart} />
         </header>
     );
 }

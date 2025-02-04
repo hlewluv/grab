@@ -43,10 +43,10 @@ const GrabFoodInfo = () => {
           key={index}
         >
           <h3>{item.title}</h3>
-          <p>{item.description}</p>
+          <p className={cx("grabfoodName")}>{item.description}</p>
           <hr
                 style={{
-                    marginTop: '10px',
+                    marginTop: '15px',
                     borderColor: 'rgba(242, 238, 238, 0.95)',
                     borderStyle: 'solid',
                     borderWidth: '1px',

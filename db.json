@@ -74,6 +74,21 @@
                             "image": "/assets/images/img/pho-ga.png",
                             "description": "Phở gà truyền thống với nước dùng thanh ngọt và thịt gà thơm ngon."
                         }
+                    ],
+                    "category": "Sushi",
+                    "food_items": [
+                        {
+                            "name": "Sashimi Cá Hồi",
+                            "price": "150,000 VND",
+                            "image": "/assets/images/img/sashimi-salmon.png",
+                            "description": "Sashimi cá hồi tươi ngon, mềm mịn, tan chảy trong miệng."
+                        },
+                        {
+                            "name": "Nigiri Tôm",
+                            "price": "90,000 VND",
+                            "image": "/assets/images/img/nigiri-shrimp.png",
+                            "description": "Cơm sushi kết hợp với tôm tươi, chấm kèm nước tương và wasabi."
+                        }
                     ]
                 }
             ]

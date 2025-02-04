@@ -1,0 +1,75 @@
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: flex-start; // Canh modal lên đầu
+    justify-content: flex-end; // Đẩy modal sát lề phải
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+
+    &.active {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+.modal-container {
+    background: white;
+    padding: 20px;
+    border-radius: 0; // Bỏ bo góc để full màn hình
+    text-align: center;
+    width: 400px;
+    height: 100vh; // Full chiều cao màn hình
+    box-shadow: -4px 0 10px rgba(0, 0, 0, 0.1); // Đổ bóng nhẹ ở cạnh trái
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    position: fixed;
+    top: 0;
+    right: 0; // Gắn sát vào lề phải
+
+    &.active {
+        transform: translateX(0);
+    }
+}
+
+.modal-content img {
+    width: 200px;  // Đặt kích thước ảnh lớn hơn
+    height: auto;  // Đảm bảo tỷ lệ ảnh không bị méo
+    margin-bottom: 15px;
+    transition: transform 0.3s ease-in-out;
+
+    &:hover {
+        transform: scale(1.1); // Hiệu ứng zoom nhẹ khi hover
+    }
+}
+
+.modal-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.modal-caption {
+    font-size: 14px;
+    color: gray;
+    margin-bottom: 15px;
+}
+
+.continue-link {
+    display: inline-block;
+    text-decoration: none;
+    color: #00a5cf;
+    cursor: pointer;
+    font-size: 14px;
+    text-align: center;
+    transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+
+    &:active {
+        transform: scale(0.95); // Hiệu ứng nhấn xuống
+    }
+}

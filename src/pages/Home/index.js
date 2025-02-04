@@ -11,11 +11,13 @@ import Content from '~/components/Layout/components/Content';
 import GrabFoodInfo from '~/components/Layout/components/QA';
 import DownloadSection from '~/components/Layout/components/Download';
 import Footer from '~/components/Layout/DefaultLayout/Footer';
+import CartModal from '~/components/Layout/components/CartModal'; // Import modal
 
 const cx = classNames.bind(styles);
 
 function Home() {
     const [isScrolled, setIsScrolled] = useState(false);
+    const [isCartOpen, setIsCartOpen] = useState(false);
     const location = useLocation();
     const { user, initials } = location.state || {}; // Lấy thông tin từ state
 
@@ -72,6 +74,8 @@ function Home() {
             <GrabFoodInfo />
 
             <DownloadSection/>
+
+            <CartModal isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
 
             <Footer/>
         </div>
